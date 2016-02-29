@@ -371,6 +371,10 @@ OMX_ERRORTYPE SoftAVCEncoder::internalGetParameter(
             OMX_VIDEO_PARAM_BITRATETYPE *bitRate =
                 (OMX_VIDEO_PARAM_BITRATETYPE *) params;
 
+            if (!isValidOMXParam(bitRate)) {
+                return OMX_ErrorBadParameter;
+            }
+
             if (bitRate->nPortIndex != 1) {
                 return OMX_ErrorUndefined;
             }
@@ -384,6 +388,10 @@ OMX_ERRORTYPE SoftAVCEncoder::internalGetParameter(
         {
             OMX_VIDEO_PARAM_AVCTYPE *avcParams =
                 (OMX_VIDEO_PARAM_AVCTYPE *)params;
+
+            if (!isValidOMXParam(avcParams)) {
+                return OMX_ErrorBadParameter;
+            }
 
             if (avcParams->nPortIndex != 1) {
                 return OMX_ErrorUndefined;
@@ -428,6 +436,10 @@ OMX_ERRORTYPE SoftAVCEncoder::internalSetParameter(
             OMX_VIDEO_PARAM_BITRATETYPE *bitRate =
                 (OMX_VIDEO_PARAM_BITRATETYPE *) params;
 
+            if (!isValidOMXParam(bitRate)) {
+                return OMX_ErrorBadParameter;
+            }
+
             if (bitRate->nPortIndex != 1 ||
                 bitRate->eControlRate != OMX_Video_ControlRateVariable) {
                 return OMX_ErrorUndefined;
@@ -441,6 +453,10 @@ OMX_ERRORTYPE SoftAVCEncoder::internalSetParameter(
         {
             OMX_VIDEO_PARAM_AVCTYPE *avcType =
                 (OMX_VIDEO_PARAM_AVCTYPE *)params;
+
+            if (!isValidOMXParam(avcType)) {
+                return OMX_ErrorBadParameter;
+            }
 
             if (avcType->nPortIndex != 1) {
                 return OMX_ErrorUndefined;
